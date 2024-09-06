@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "id": "23445322",
+      "idtype": "C",
+      "primerNombre": "Juan",
+      "segundoNombre": "Camilo",
+      "primerApellido": "López",
+      "segundoApellido": "Cortes",
+      "Telefono": "6012345678",
+      "Direccion": "kra 100 no 50-70",
+      "CiudadResidencia": "Bogotá D.C"
+    },
+    {
+      "id": "1039454860",
+      "idtype": "P",
+      "primerNombre": "Santiago",
+      "segundoNombre": "Esteban",
+      "primerApellido": "Amaya",
+      "segundoApellido": "Torres",
+      "Telefono": "6019475738",
+      "Direccion": "Calle 11 no 7-70",
+      "CiudadResidencia": "Bogotá D.C"
+    }
+  ]
+}

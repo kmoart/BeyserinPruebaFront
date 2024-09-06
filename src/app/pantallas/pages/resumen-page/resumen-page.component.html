@@ -1,0 +1,19 @@
+<div class="flex flex-column">
+
+  <span class="text-lg mb-4">Información básica</span>
+
+  <mat-form-field>
+    <mat-label>Primer Apellido</mat-label>
+    <input type="text" matInput placeholder="" [value]="user?.primerApellido" disabled="true">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Primer Nombre</mat-label>
+    <input type="text" matInput placeholder="" [value]="user?.primerNombre" disabled="true">
+  </mat-form-field>
+
+  <div class="flex justify-content-end mt-5">
+      <button mat-button mat-flat-button color="primary"
+       routerLink="/pantallas/ingrsar-info">Volver a ingreso de información</button>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="flex flex-column">
+
+  <span class="text-lg mb-4">Todos los campos son obligatorios</span>
+  <div class="col-12 sm:col-6">
+
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+          <mat-form-field>
+            <mat-label>Tipo de Documento</mat-label>
+            <mat-select formControlName="typeDocument">
+                        <!--<mat-option *ngFor="let publisher of publishers"
+                          [value] ="publisher.id">
+                          {{ publisher.desc }}
+                        </mat-option>-->
+                        <mat-option
+                          value=""
+                        ></mat-option>
+                        <mat-option
+                          value="C"
+                        >Cedula de Ciudadanía</mat-option>
+                        <mat-option
+                          value="P"
+                        >Pasaporte</mat-option>
+              </mat-select>
+              <mat-error *ngIf="userForm.get('id')?.hasError('required')">*Campo requerido</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Número de Documento</mat-label>
+            <input type="text" matInput  formControlName="id" placeholder="Ingrese número de documento" required="true">
+            <mat-error *ngIf="userForm.get('id')?.hasError('required')">*Campo requerido</mat-error>
+                      <mat-error *ngIf="userForm.get('id')?.hasError('minlength')">*Campo minimo 8 caracteres</mat-error>
+                      <mat-error *ngIf="userForm.get('id')?.hasError('maxlength')">*Campo máximo 11 caracteres</mat-error>
+          </mat-form-field>
+        </form>
+  </div>
+          <button mat-button
+    mat-flat-button
+    color="primary"
+    (click)="onSubmit()">
+      Buscar
+    </button>
+
+</div>
