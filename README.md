@@ -1,4 +1,4 @@
-Proceso de instalación y ejecución de la app PruebaSilice
+Proceso de instalación y ejecución de la app PruebaFront
 
 Instalar en el equipo de ejecución la librería nodejs que se encuentra en la web oficial de nodejs https://nodejs.org/en/download/prebuilt-installer
 
