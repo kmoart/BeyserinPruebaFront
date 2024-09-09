@@ -26,18 +26,21 @@
 
           <mat-form-field>
             <mat-label>Número de Documento</mat-label>
-            <input type="text" matInput  formControlName="id" placeholder="Ingrese número de documento" required="true">
+            <input type="text" matInput  formControlName="id" placeholder="número de documento" required="true" id="number">
             <mat-error *ngIf="userForm.get('id')?.hasError('required')">*Campo requerido</mat-error>
                       <mat-error *ngIf="userForm.get('id')?.hasError('minlength')">*Campo minimo 8 caracteres</mat-error>
                       <mat-error *ngIf="userForm.get('id')?.hasError('maxlength')">*Campo máximo 11 caracteres</mat-error>
           </mat-form-field>
         </form>
   </div>
-          <button mat-button
+  <div class="col-12 sm:col-6">
+    <button mat-button
     mat-flat-button
     color="primary"
     (click)="onSubmit()">
       Buscar
     </button>
+
+  </div>
 
 </div>
