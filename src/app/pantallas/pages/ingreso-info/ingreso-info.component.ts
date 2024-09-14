@@ -11,41 +11,45 @@ import { User } from '../../interfaces/user.interface';
 })
 export class IngresoInfoComponent {
 
-  req : boolean = false;
-  req2 : boolean = false;
+  user!: User;
   isDisabled: boolean = true;
 
   public userForm = new FormGroup({
     id: new FormControl<string>('',[ Validators.required,Validators.minLength(8),Validators.maxLength(11)]),
-    typeDocument: new FormControl<string>('',[ Validators.required,]),
+    idType: new FormControl<string>('',[ Validators.required,])
   });
 
   constructor(
     private userService: UserService,
-    private activatedRoute: ActivatedRoute,
     private router: Router){
 
   }
 
-  get currentProduct(): User {
-    const user = this.userForm.value as User;
-
-    return user;
-  }
-
   onSubmit(): void{
     console.log(this.userForm.controls.id.value);
-
+    console.log(this.userForm.controls.idType.value);
     if(this.userForm.invalid){
-      this.req = true;
-      this.req2 = true;
       return
     }
 
-    this.userService.getUserById(this.userForm.controls.id.value!)
+    console.log(this.userForm);
+    this.userService.getUserById(this.userForm.controls.id.value!,this.userForm.controls.idType.value! )
     .subscribe( user =>{
-      this.router.navigate(['/pantallas/resumen', this.userForm.controls.id.value]);
-        console.log(user);
+      this.user = user[0];
+      this.router.navigate(
+        ['/pantallas/resumen'],
+        { queryParams :
+          { id:this.userForm.controls.id.value! ,
+            idType: this.userForm.controls.idType.value! }});
+          console.log(user);
     });
+  }
+
+  isAnswered(): boolean {
+    if(this.userForm.valid){
+      return true;
+    }else{
+      return false;
+    }
   }
 }

@@ -2,7 +2,7 @@
   "users": [
     {
       "id": "23445322",
-      "idtype": "C",
+      "idType": "C",
       "primerNombre": "Juan",
       "segundoNombre": "Camilo",
       "primerApellido": "López",
@@ -13,7 +13,7 @@
     },
     {
       "id": "1039454860",
-      "idtype": "P",
+      "idType": "P",
       "primerNombre": "Santiago",
       "segundoNombre": "Esteban",
       "primerApellido": "Amaya",

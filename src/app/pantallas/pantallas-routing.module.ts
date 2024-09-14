@@ -13,7 +13,7 @@ const routes: Routes = [
         path: 'ingresar-info', component: IngresoInfoComponent
       },
       {
-        path: 'resumen/:id', component: ResumenPageComponent
+        path: 'resumen', component: ResumenPageComponent
       },
       {
         path:'**', redirectTo: 'ingresar-info'

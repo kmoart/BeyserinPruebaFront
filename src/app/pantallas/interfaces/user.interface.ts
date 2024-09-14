@@ -1,6 +1,6 @@
 export interface User {
   id:             string,
-  idNumber:       string,
+  idtype:         string,
   primerNombre:   string,
   segundoNombre:   string,
   primerApellido:  string,

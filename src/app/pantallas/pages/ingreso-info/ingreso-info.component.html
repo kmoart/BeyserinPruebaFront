@@ -6,7 +6,7 @@
         <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
           <mat-form-field>
             <mat-label>Tipo de Documento</mat-label>
-            <mat-select formControlName="typeDocument">
+            <mat-select formControlName="idType">
                         <!--<mat-option *ngFor="let publisher of publishers"
                           [value] ="publisher.id">
                           {{ publisher.desc }}
@@ -37,10 +37,9 @@
     <button mat-button
     mat-flat-button
     color="primary"
-    (click)="onSubmit()">
+    (click)="onSubmit()" [disabled]="!isAnswered()">
       Buscar
     </button>
-
   </div>
 
 </div>

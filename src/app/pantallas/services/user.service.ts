@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environments } from '../../../environments/environments';
-import { catchError, Observable, of } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { User } from '../interfaces/user.interface';
 
 
@@ -16,11 +16,14 @@ export class UserService {
       return this.httpClient.get<User[]>(`${this.baseUrl}/users`);
   }
 
-  getUserById( id: string ): Observable<User | undefined>{
-      return this.httpClient.get<User>(`${this.baseUrl}/users/${ id }`)
-      .pipe(
-        catchError( error => of(undefined))
-      )
+  getUserById( id: string, idType: string ): Observable<User[]>{
+    let queryParams = new HttpParams();
+    console.log('id', id);
+    console.log('idType', idType);
+    queryParams = queryParams.append('id', String(id));
+    queryParams = queryParams.append('idType', String(idType));
+    console.log('In service queryParams', queryParams);
+    return this.httpClient.get<User[]>(`${this.baseUrl}/users`,{params: queryParams})
   }
 
   addUser( user: User): Observable<User>{
