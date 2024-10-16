@@ -34,17 +34,18 @@ export class ResumenPageComponent implements OnInit{
   }
 
   getUserByIdAndIdType(){
-    this.activatedRoute.queryParams
+   this.activatedRoute.queryParams
     .subscribe( params =>{
       this.id = params['id'];
       this.idType = params['idType'];
     })
 
-    this.userService.getUserById( this.id, this.idType )
-      .subscribe( user => {
-          this.user = user[0];
-          this.resumeForm.controls['firstSurname'].setValue(this.user.primerApellido);
-          this.resumeForm.controls['firstName'].setValue(this.user.primerNombre);
+    this.userService.getUserByIdAndType( this.id, this.idType )
+      .subscribe( (user:User) => {
+          this.user = user;
+          console.log(this.user);
+          this.resumeForm.controls['firstSurname'].setValue(user.primerApellido);
+          this.resumeForm.controls['firstName'].setValue(user.primerNombre);
       });
   }
 }

@@ -16,14 +16,15 @@ export class UserService {
       return this.httpClient.get<User[]>(`${this.baseUrl}/users`);
   }
 
-  getUserById( id: string, idType: string ): Observable<User[]>{
-    let queryParams = new HttpParams();
+  getUserByIdAndType( id: string, idType: string ): Observable<User>{
+    /*let queryParams = new HttpParams();*/
     console.log('id', id);
     console.log('idType', idType);
-    queryParams = queryParams.append('id', String(id));
+    /*queryParams = queryParams.append('id', String(id));
     queryParams = queryParams.append('idType', String(idType));
     console.log('In service queryParams', queryParams);
-    return this.httpClient.get<User[]>(`${this.baseUrl}/users`,{params: queryParams})
+    return this.httpClient.get<User[]>(`${this.baseUrl}/users`,{params: queryParams})*/
+    return this.httpClient.get<User>(`${this.baseUrl}/api/users/${ id }/${ idType }`);
   }
 
   addUser( user: User): Observable<User>{

@@ -9,7 +9,7 @@ import { environments } from '../../../environments/environments';
 
 const listUsers: User[] = [];
 
-const user: User[] =[{
+const user: User ={
   id:             '001',
   idtype:         'C',
   primerNombre:   'Camilo',
@@ -19,7 +19,7 @@ const user: User[] =[{
   Telefono:        '3123456789',
   Direccion:       'Av Siempre Viva',
   CiudadResidencia:'Bogotá D.C.'
-}];
+};
 
 describe('userService', () =>{
     let userService : UserService;
@@ -62,19 +62,19 @@ describe('userService', () =>{
 
 
     it('getUser by Id does a get method', () =>{
-      userService.getUserById(user[0].id, user[0].idtype).subscribe(( resp: User[] | undefined) =>{
-      //userService.getUserById(user.id).subscribe(( resp: User | undefined) =>{
+      //userService.getUserById(user[0].id, user[0].idtype).subscribe(( resp: User[] | undefined) =>{
+      userService.getUserByIdAndType(user.id, user.idtype).subscribe(( resp: User | undefined) =>{
           expect(resp).toEqual(user);// Verificamos que el resultado devuelva el tipo adecuado
       });
 
-      const  request = httpMock.expectOne(`${baseUrl}/users/${ user[0].id  }`);
+      const  request = httpMock.expectOne(`${baseUrl}/users/${ user.id  }/${ user.idtype }`);
       expect(request.request.method).toBe('GET');
       request.flush( user );//Nos devuelve un observable de tipo user
     });
 
     it('addUser does a post method', () =>{
-      userService.addUser(user[0]).subscribe(( resp: User ) =>{
-          expect(resp).toEqual(user[0]);// Verificamos que el resultado devuelva el tipo adecuado
+      userService.addUser(user).subscribe(( resp: User ) =>{
+          expect(resp).toEqual(user);// Verificamos que el resultado devuelva el tipo adecuado
       });
 
       const  request = httpMock.expectOne(`${baseUrl}/users`);

@@ -13,6 +13,7 @@ export class IngresoInfoComponent {
 
   user!: User;
   isDisabled: boolean = true;
+  number: Number = 0;
 
   public userForm = new FormGroup({
     id: new FormControl<string>('',[ Validators.required,Validators.minLength(8),Validators.maxLength(11)]),
@@ -33,9 +34,9 @@ export class IngresoInfoComponent {
     }
 
     console.log(this.userForm);
-    this.userService.getUserById(this.userForm.controls.id.value!,this.userForm.controls.idType.value! )
+    this.userService.getUserByIdAndType(this.userForm.controls.id.value!,this.userForm.controls.idType.value! )
     .subscribe( user =>{
-      this.user = user[0];
+      this.user = user;
       this.router.navigate(
         ['/pantallas/resumen'],
         { queryParams :
